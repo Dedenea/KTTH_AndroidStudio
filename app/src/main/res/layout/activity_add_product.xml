@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProduct"
+    android:background="@drawable/bgcolor">
+
+    <EditText
+        android:id="@+id/txtAddCountry"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/drb"
+        android:drawableLeft="@drawable/countryadd"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Country"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/txtAddPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtAddPrice"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddPrice" />
+
+    <EditText
+        android:id="@+id/txtAddPrice"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/drb"
+        android:drawableLeft="@drawable/price"
+        android:drawablePadding="24dp"
+        android:ems="10"
+        android:hint="Price"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/txtAddType"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtAddType"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddType" />
+
+    <EditText
+        android:id="@+id/txtAddType"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/drb"
+        android:drawableLeft="@drawable/type"
+        android:drawablePadding="21dp"
+        android:ems="10"
+        android:hint="Type"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="234dp"
+        android:layout_height="112dp"
+        android:text="ADD PRODUCT"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/black"
+        android:text="Create"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtAddCountry"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtAddCountry"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddCountry" />
+</androidx.constraintlayout.widget.ConstraintLayout>

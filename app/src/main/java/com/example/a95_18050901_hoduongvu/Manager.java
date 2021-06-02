@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Manager extends AppCompatActivity {
-    Button btnShow;
+    Button btnShow,btnLogout,btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,23 @@ public class Manager extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnAdd=findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Manager.this,AddProduct.class);
+                startActivity(intent);
+            }
+        });
+        btnLogout=findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Manager.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

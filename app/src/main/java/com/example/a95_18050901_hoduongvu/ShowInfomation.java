@@ -2,7 +2,10 @@ package com.example.a95_18050901_hoduongvu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,11 +28,20 @@ public class ShowInfomation extends AppCompatActivity {
     private  ProductAdapter productAdapter;
     String url="https://60b6e58117d1dc0017b8882b.mockapi.io/Product";
 
+    Button btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_infomation);
         GetArrayJson(url);
+        btnBack=findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ShowInfomation.this,Manager.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetArrayJson(String url) {
@@ -61,6 +73,5 @@ public class ShowInfomation extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
-
     }
 }
