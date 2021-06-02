@@ -8,6 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.List;
 
@@ -66,8 +74,35 @@ public class ProductAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-        //
+        //delete
+        xoa=convertView.findViewById(R.id.btnDelete);
+        xoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DeleteApi(url,ma.getText().toString().trim());
+                Intent intent  = new Intent(context.getApplicationContext(),ShowInfomation.class);
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
+    }
+
+    //delete
+    private void DeleteApi(String url,String id){
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.DELETE, url + '/' + id, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(context.getApplicationContext(), "Successfully!", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context.getApplicationContext(), "Error by Post data!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 }
