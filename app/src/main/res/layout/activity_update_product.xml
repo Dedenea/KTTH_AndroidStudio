@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProduct"
+    tools:context=".UpdateProduct"
     android:background="@drawable/bgcolor">
-
     <Button
         android:id="@+id/btnBack3"
         android:layout_width="0dp"
@@ -27,7 +26,7 @@
         android:layout_height="67dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/drb"
-        android:drawableLeft="@drawable/countryadd"
+        android:drawableLeft="@drawable/countryup"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Country"
@@ -75,13 +74,13 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="234dp"
-        android:layout_height="112dp"
-        android:text="ADD PRODUCT"
-        android:textStyle="bold"
+        android:layout_width="304dp"
+        android:layout_height="114dp"
+        android:gravity="center"
+        android:text="UPDATE PRODUCT"
         android:textColor="@color/black"
         android:textSize="30dp"
-        android:gravity="center"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +90,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="36dp"
         android:background="@color/black"
-        android:text="Create"
+        android:text="save"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/txtUpCountry"

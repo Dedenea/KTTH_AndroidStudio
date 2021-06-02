@@ -1,10 +1,12 @@
 package com.example.a95_18050901_hoduongvu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -39,6 +41,7 @@ public class ProductAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView ma,loai,gia,nguon;
+        Button sua,xoa;
         convertView= LayoutInflater.from(context).inflate(layout,parent,false);
         ma=convertView.findViewById(R.id.txtID);
         loai=convertView.findViewById(R.id.txtType);
@@ -48,6 +51,23 @@ public class ProductAdapter extends BaseAdapter {
         loai.setText(list.get(position).getType());
         gia.setText(list.get(position).getPrice());
         nguon.setText(list.get(position).getCountry());
+
+        //update
+        sua=convertView.findViewById(R.id.btnUpdate);
+        sua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Product product = list.get(position);
+                Intent intent = new Intent(context,UpdateProduct.class);
+                intent.putExtra("id",product.getId());
+                intent.putExtra("type",product.getType());
+                intent.putExtra("price",product.getPrice());
+                intent.putExtra("country",product.getCountry());
+                context.startActivity(intent);
+            }
+        });
+        //
+
         return convertView;
     }
 }

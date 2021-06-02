@@ -20,52 +20,59 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddProduct extends AppCompatActivity {
+public class UpdateProduct extends AppCompatActivity {
     EditText type,price,country;
-    Button btnCreate,btnBack2;
+    Button btnSave,btnBack3;
     String url="https://60b6e58117d1dc0017b8882b.mockapi.io/Product";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
+        setContentView(R.layout.activity_update_product);
 
-        btnCreate=findViewById(R.id.btnSave);
-        btnCreate.setOnClickListener(new View.OnClickListener() {
+        type=findViewById(R.id.txtUpType);
+        price=findViewById(R.id.txtUpPrice);
+        country=findViewById(R.id.txtUpCountry);
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        type.setText(intent.getStringExtra("type"));
+        price.setText(intent.getStringExtra("price"));
+        country.setText(intent.getStringExtra("country"));
+
+        btnSave=findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PostApi(url);
-                Intent intent = new Intent(AddProduct.this,ShowInfomation.class);
+                PutApi(url,id);
+                Intent intent  = new Intent(getApplicationContext(),ShowInfomation.class);
                 startActivity(intent);
             }
         });
-        btnBack2=findViewById(R.id.btnBack3);
-        btnBack2.setOnClickListener(new View.OnClickListener() {
+        btnBack3=findViewById(R.id.btnBack3);
+        btnBack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddProduct.this,Manager.class);
+                Intent intent = new Intent(UpdateProduct.this,Manager.class);
                 startActivity(intent);
             }
         });
+
 
     }
-    private void PostApi(String url){
+    private void PutApi(String url,String id){
         StringRequest stringRequest = new StringRequest(
-                Request.Method.POST, url, new Response.Listener<String>() {
+                Request.Method.PUT, url + '/' + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(AddProduct.this, "Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateProduct.this, "Successfully", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AddProduct.this, "Error by Post data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateProduct.this, "Error by Post data!", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                type=findViewById(R.id.txtUpType);
-                price=findViewById(R.id.txtUpPrice);
-                country=findViewById(R.id.txtUpCountry);
                 HashMap<String, String> params = new HashMap<>();
                 params.put("type", type.getText().toString());
                 params.put("price", price.getText().toString());
